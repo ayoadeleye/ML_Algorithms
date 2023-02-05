@@ -13,12 +13,14 @@ class LinearRegression:
         self.weights = np.zeros(num_features)
         self.bias = 0
 
+        # Gradient descent 
         for _ in range(self.num_iterations):
             y_prediction = np.dot(x, self.weights) + self.bias
 
             dw = (1 / num_samples) * np.dot(x.T, (y_prediction - y))
             db = (1 / num_samples) * np.sum(y_prediction - y)
 
+            # updating the bias and weights simultaneously after each iteration
             self.weights = self.weights - self.lr * dw
             self.bias = self.bias - self.lr * db
 
